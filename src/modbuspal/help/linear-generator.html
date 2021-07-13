@@ -1,0 +1,64 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>ModbusPal</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    
+      <h1>Linear generator</h1>
+
+      <p>
+      <img src="../generator/linear/LinearGenerator.png" alt="Linear generator icon" class="img-wrap-around"/>
+        The Linear generator acts like a mathematical linear function of the
+        <q>f(x)=ax+b</q> kind. The first and the final values must be
+        specified so that the “a” and “b” parameters are computed automatically.</p>
+
+      <p>A large variety of results can be obtained by enabling or disabling
+      the <q>relative</q> options:</p>
+
+        <ul>
+            <li>When <q>relative</q> is enabled for the <q>Start value</q>, 
+            the actual start value is the sum of the automation’s value at the 
+            moment when the generator starts and the value in the <q>Start value</q> input box.
+            <li>When <q>relative</q> is enabled for the <q>End value</q>, the 
+            actual end value is the sum of the generator’s start value and 
+            the value in the <q>End value</q> input box.
+        </ul>
+
+
+      <h2>Example 1: absolute values only</h2>
+
+      <p>
+          <img class="img-stand-alone" src="img/linear_params_ex1.jpg" alt="Example 1 parameters"/>
+          <img class="img-stand-alone" src="img/linear_chart_ex1.jpg" alt="Example 1 chart"/>
+      </p>
+
+      <h2>Example 2: relative start value</h2>
+
+      <p>
+          <img class="img-stand-alone" src="img/linear_params_ex2.jpg" alt="Example 2 parameters"/>
+          <img class="img-stand-alone" src="img/linear_chart_ex2.jpg" alt="Example 2 chart"/>
+      </p>
+
+      <h2>Example 3: segmented chart</h2>
+
+      <p>
+          <img class="img-stand-alone" src="img/linear_params_ex3.jpg" alt="Example 3 parameters"/>
+          <img class="img-stand-alone" src="img/linear_chart_ex3.jpg" alt="Example 3 chart"/>
+      </p>
+
+      <h2>Example 4: continuous line</h2>
+
+      <p>
+          <img class="img-stand-alone" src="img/linear_params_ex4.jpg" alt="Example 4 parameters"/>
+          <img class="img-stand-alone" src="img/linear_chart_ex4.jpg" alt="Example 4 chart"/>
+      </p>
+        
+  </body>
+</html>

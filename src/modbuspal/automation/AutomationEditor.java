@@ -302,32 +302,32 @@ implements AutomationEditionListener, AutomationExecutionListener, InstantiableM
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        buttonsPanel = new javax.swing.JPanel();
-        controlsPanel = new javax.swing.JPanel();
+        buttonsPanel = new JPanel();
+        controlsPanel = new JPanel();
         playToggleButton = new javax.swing.JToggleButton();
-        stopButton = new javax.swing.JButton();
+        stopButton = new JButton();
         loopToggleButton = new javax.swing.JToggleButton();
-        addGenPanel = new javax.swing.JPanel();
-        genButtonsPanel = new javax.swing.JPanel();
-        removeInstanciatorButton = new javax.swing.JButton();
-        generatorsPanel = new javax.swing.JPanel();
-        valuePanel = new javax.swing.JPanel();
-        valueTextField = new javax.swing.JTextField();
-        settingsPanel = new javax.swing.JPanel();
+        addGenPanel = new JPanel();
+        genButtonsPanel = new JPanel();
+        removeInstanciatorButton = new JButton();
+        generatorsPanel = new JPanel();
+        valuePanel = new JPanel();
+        valueTextField = new JTextField();
+        settingsPanel = new JPanel();
         jLabel3 = new javax.swing.JLabel();
-        initTextField = new javax.swing.JTextField();
+        initTextField = new JTextField();
         jLabel2 = new javax.swing.JLabel();
-        stepTextField = new javax.swing.JTextField();
-        importExportPanel = new javax.swing.JPanel();
-        importButton = new javax.swing.JButton();
-        exportButton = new javax.swing.JButton();
+        stepTextField = new JTextField();
+        importExportPanel = new JPanel();
+        importButton = new JButton();
+        exportButton = new JButton();
         chartToggleButton = new javax.swing.JToggleButton();
-        jPanel1 = new javax.swing.JPanel();
+        jPanel1 = new JPanel();
         generatorsListScrollPane = new javax.swing.JScrollPane();
-        generatorsListPanel = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        generatorsListPanel = new JPanel();
+        jPanel2 = new JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButton1 = new JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -337,8 +337,8 @@ implements AutomationEditionListener, AutomationExecutionListener, InstantiableM
         controlsPanel.setLayout(new java.awt.GridBagLayout());
 
         playToggleButton.setText("Play");
-        playToggleButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        playToggleButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 playToggleButtonActionPerformed(evt);
             }
         });
@@ -349,8 +349,8 @@ implements AutomationEditionListener, AutomationExecutionListener, InstantiableM
         controlsPanel.add(playToggleButton, gridBagConstraints);
 
         stopButton.setText("Stop");
-        stopButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        stopButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 stopButtonActionPerformed(evt);
             }
         });
@@ -362,8 +362,8 @@ implements AutomationEditionListener, AutomationExecutionListener, InstantiableM
 
         loopToggleButton.setSelected(automation.isLoopEnabled());
         loopToggleButton.setText("Loop");
-        loopToggleButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        loopToggleButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 loopToggleButtonActionPerformed(evt);
             }
         });
@@ -385,8 +385,8 @@ implements AutomationEditionListener, AutomationExecutionListener, InstantiableM
         genButtonsPanel.setLayout(new java.awt.GridBagLayout());
 
         removeInstanciatorButton.setText("...");
-        removeInstanciatorButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        removeInstanciatorButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 removeInstanciatorButtonActionPerformed(evt);
             }
         });
@@ -472,24 +472,24 @@ implements AutomationEditionListener, AutomationExecutionListener, InstantiableM
         importExportPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         importButton.setText("Import");
-        importButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        importButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 importButtonActionPerformed(evt);
             }
         });
         importExportPanel.add(importButton);
 
         exportButton.setText("Export");
-        exportButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        exportButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 exportButtonActionPerformed(evt);
             }
         });
         importExportPanel.add(exportButton);
 
         chartToggleButton.setText("Chart");
-        chartToggleButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        chartToggleButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 chartToggleButtonActionPerformed(evt);
             }
         });
@@ -497,7 +497,7 @@ implements AutomationEditionListener, AutomationExecutionListener, InstantiableM
 
         getContentPane().add(importExportPanel, java.awt.BorderLayout.PAGE_START);
 
-        jPanel1.setLayout(new java.awt.CardLayout());
+        jPanel1.setLayout(new CardLayout());
 
         generatorsListScrollPane.setPreferredSize(new java.awt.Dimension(300, 250));
 
@@ -516,8 +516,8 @@ implements AutomationEditionListener, AutomationExecutionListener, InstantiableM
         jPanel2.add(jLabel1, gridBagConstraints);
 
         jButton1.setText("Why?");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
@@ -534,7 +534,7 @@ implements AutomationEditionListener, AutomationExecutionListener, InstantiableM
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void playToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playToggleButtonActionPerformed
+    private void playToggleButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_playToggleButtonActionPerformed
 
         if( playToggleButton.isSelected() )
         {
@@ -570,15 +570,15 @@ implements AutomationEditionListener, AutomationExecutionListener, InstantiableM
         automation.stop();
     }
 
-    private void stopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopButtonActionPerformed
+    private void stopButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_stopButtonActionPerformed
         stopAutomation();
     }//GEN-LAST:event_stopButtonActionPerformed
 
-    private void loopToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loopToggleButtonActionPerformed
+    private void loopToggleButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_loopToggleButtonActionPerformed
         automation.setLoopEnabled( loopToggleButton.isSelected() );
     }//GEN-LAST:event_loopToggleButtonActionPerformed
 
-    private void exportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportButtonActionPerformed
+    private void exportButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_exportButtonActionPerformed
 
         // newInstance and setup dialog
         JFileChooser chooser = new XFileChooser(XFileChooser.AUTOMATION_FILE);
@@ -608,7 +608,7 @@ implements AutomationEditionListener, AutomationExecutionListener, InstantiableM
         automation.setStepDelay(val);
     }//GEN-LAST:event_stepTextFieldFocusLost
 
-    private void importButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importButtonActionPerformed
+    private void importButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_importButtonActionPerformed
 
         // newInstance and setup dialog
         JFileChooser chooser = new XFileChooser(XFileChooser.AUTOMATION_FILE);
@@ -653,14 +653,14 @@ implements AutomationEditionListener, AutomationExecutionListener, InstantiableM
         automation.setInitialValue( dval );
     }//GEN-LAST:event_initTextFieldFocusLost
 
-    private void removeInstanciatorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeInstanciatorButtonActionPerformed
+    private void removeInstanciatorButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_removeInstanciatorButtonActionPerformed
 
         // ask script manager to appear, with the "generators" tab selected
         modbusPalPane.showScriptManagerDialog();
 
     }//GEN-LAST:event_removeInstanciatorButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ErrorMessage dialog = new ErrorMessage("Close");
         dialog.setTitle("Chart disabled");
         dialog.append("It seems that jFreeChart is not present on your computer, and it is required to draw the chart.");
@@ -668,7 +668,7 @@ implements AutomationEditionListener, AutomationExecutionListener, InstantiableM
         dialog.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void chartToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chartToggleButtonActionPerformed
+    private void chartToggleButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_chartToggleButtonActionPerformed
         CardLayout cl = (CardLayout)jPanel1.getLayout();
         if( chartToggleButton.isSelected()==true )
         {
@@ -689,32 +689,32 @@ implements AutomationEditionListener, AutomationExecutionListener, InstantiableM
     }//GEN-LAST:event_chartToggleButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel addGenPanel;
-    private javax.swing.JPanel buttonsPanel;
+    private JPanel addGenPanel;
+    private JPanel buttonsPanel;
     private javax.swing.JToggleButton chartToggleButton;
-    private javax.swing.JPanel controlsPanel;
-    private javax.swing.JButton exportButton;
-    private javax.swing.JPanel genButtonsPanel;
-    private javax.swing.JPanel generatorsListPanel;
+    private JPanel controlsPanel;
+    private JButton exportButton;
+    private JPanel genButtonsPanel;
+    private JPanel generatorsListPanel;
     private javax.swing.JScrollPane generatorsListScrollPane;
-    private javax.swing.JPanel generatorsPanel;
-    private javax.swing.JButton importButton;
-    private javax.swing.JPanel importExportPanel;
-    private javax.swing.JTextField initTextField;
-    private javax.swing.JButton jButton1;
+    private JPanel generatorsPanel;
+    private JButton importButton;
+    private JPanel importExportPanel;
+    private JTextField initTextField;
+    private JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private JPanel jPanel1;
+    private JPanel jPanel2;
     private javax.swing.JToggleButton loopToggleButton;
     private javax.swing.JToggleButton playToggleButton;
-    private javax.swing.JButton removeInstanciatorButton;
-    private javax.swing.JPanel settingsPanel;
-    private javax.swing.JTextField stepTextField;
-    private javax.swing.JButton stopButton;
-    private javax.swing.JPanel valuePanel;
-    private javax.swing.JTextField valueTextField;
+    private JButton removeInstanciatorButton;
+    private JPanel settingsPanel;
+    private JTextField stepTextField;
+    private JButton stopButton;
+    private JPanel valuePanel;
+    private JTextField valueTextField;
     // End of variables declaration//GEN-END:variables
 
     @Override

@@ -80,7 +80,7 @@ implements ModbusPduProcessor
     }
 
     /**
-     * @see #savePduProcessorSettings(java.io.OutputStream) 
+     * @see #savePduProcessorSettings(OutputStream)
      * @param out the output stream where the settings must be saved
      * @throws IOException
      * @deprecated ambiguous name
@@ -95,7 +95,7 @@ implements ModbusPduProcessor
     }
 
   /**
-     * @see #loadPduProcessorSettings(org.w3c.dom.NodeList) 
+     * @see #loadPduProcessorSettings(NodeList)
      * @param list the nodes containing the settings to load
      * @deprecated ambiguous name
      */

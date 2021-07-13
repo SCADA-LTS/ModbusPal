@@ -253,8 +253,8 @@ implements Runnable
      * by using the provided InstantiableManager object.
      * @param nodes
      * @param gf the "generator factory", object that holds the instantiable generators
-     * @throws java.lang.InstantiationException
-     * @throws java.lang.IllegalAccessException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
      */
     public void loadGenerators(NodeList nodes, InstantiableManager<Generator> gf)
     throws InstantiationException, IllegalAccessException

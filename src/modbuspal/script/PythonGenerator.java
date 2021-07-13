@@ -57,7 +57,7 @@ extends Generator
     }
 
     /**
-     * @see #saveGeneratorSettings(java.io.OutputStream) 
+     * @see #saveGeneratorSettings(OutputStream)
      * @param out the output stream where the settings must be saved
      * @throws IOException
      * @deprecated ambiguous name
@@ -72,7 +72,7 @@ extends Generator
     }
 
     /**
-     * @see #loadGeneratorSettings(org.w3c.dom.NodeList) 
+     * @see #loadGeneratorSettings(NodeList)
      * @param list the nodes containing the settings to load
      * @deprecated ambiguous name
      */

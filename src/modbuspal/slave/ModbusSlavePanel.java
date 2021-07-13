@@ -110,7 +110,7 @@ implements WindowListener, ModbusSlaveListener,AncestorListener
             }
         });
         nameTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+            public void keyPressed(KeyEvent evt) {
                 nameTextFieldKeyPressed(evt);
             }
         });
@@ -216,7 +216,7 @@ implements WindowListener, ModbusSlaveListener,AncestorListener
         
     }//GEN-LAST:event_duplicateButtonActionPerformed
 
-    private void nameTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameTextFieldKeyPressed
+    private void nameTextFieldKeyPressed(KeyEvent evt) {//GEN-FIRST:event_nameTextFieldKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER)
         {
             // make the text field of the panel loose the focus,

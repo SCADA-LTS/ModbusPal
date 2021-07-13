@@ -25,7 +25,7 @@ import javax.swing.event.HyperlinkListener;
  * @author nnovic
  */
 public class HelpViewer
-extends javax.swing.JFrame
+extends JFrame
 implements HyperlinkListener
 {
 

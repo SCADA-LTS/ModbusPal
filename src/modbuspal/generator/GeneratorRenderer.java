@@ -27,7 +27,7 @@ import javax.swing.UIManager;
  * @author nnovic
  */
 public class GeneratorRenderer
-extends javax.swing.JPanel
+extends JPanel
 implements GeneratorListener
 {
 
@@ -96,19 +96,19 @@ implements GeneratorListener
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        iconPanel = new javax.swing.JPanel();
+        iconPanel = new JPanel();
         iconLabel = new javax.swing.JLabel();
-        optionPanel = new javax.swing.JPanel();
-        buttonsPanel = new javax.swing.JPanel();
+        optionPanel = new JPanel();
+        buttonsPanel = new JPanel();
         upButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         downButton = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        jPanel1 = new JPanel();
         jLabel1 = new javax.swing.JLabel();
         durationTextField = new javax.swing.JTextField();
 
         setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5)));
-        setLayout(new java.awt.BorderLayout());
+        setLayout(new BorderLayout());
 
         iconPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         iconPanel.setLayout(new java.awt.GridBagLayout());
@@ -117,12 +117,12 @@ implements GeneratorListener
         iconLabel.setToolTipText(generator.getClassName());
         iconPanel.add(iconLabel, new java.awt.GridBagConstraints());
 
-        add(iconPanel, java.awt.BorderLayout.WEST);
+        add(iconPanel, BorderLayout.WEST);
 
         optionPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
         optionPanel.setOpaque(false);
-        optionPanel.setLayout(new java.awt.BorderLayout());
-        add(optionPanel, java.awt.BorderLayout.CENTER);
+        optionPanel.setLayout(new BorderLayout());
+        add(optionPanel, BorderLayout.CENTER);
         optionPanel.add( customPanel, BorderLayout.CENTER );
 
         buttonsPanel.setOpaque(false);
@@ -191,7 +191,7 @@ implements GeneratorListener
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         buttonsPanel.add(jPanel1, gridBagConstraints);
 
-        add(buttonsPanel, java.awt.BorderLayout.EAST);
+        add(buttonsPanel, BorderLayout.EAST);
     }// </editor-fold>//GEN-END:initComponents
 
     private void durationTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_durationTextFieldFocusLost
@@ -213,15 +213,15 @@ implements GeneratorListener
     }//GEN-LAST:event_upButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel buttonsPanel;
+    private JPanel buttonsPanel;
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton downButton;
     private javax.swing.JTextField durationTextField;
     private javax.swing.JLabel iconLabel;
-    private javax.swing.JPanel iconPanel;
+    private JPanel iconPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel optionPanel;
+    private JPanel jPanel1;
+    private JPanel optionPanel;
     private javax.swing.JButton upButton;
     // End of variables declaration//GEN-END:variables
 

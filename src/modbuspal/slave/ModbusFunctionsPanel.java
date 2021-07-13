@@ -167,7 +167,7 @@ implements ModbusConst
         add(jPanel2, java.awt.BorderLayout.NORTH);
 
         functionsTable.setAutoCreateRowSorter(true);
-        functionsTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        functionsTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         jScrollPane1.setViewportView(functionsTable);
 
         add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -263,7 +263,7 @@ implements ModbusConst
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable functionsTable;
+    private JTable functionsTable;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton resetFunctoinsButton;

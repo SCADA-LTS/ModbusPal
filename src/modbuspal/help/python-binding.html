@@ -1,0 +1,258 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>ModbusPal</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+
+      <h1>How to write a binding using Python?</h1>
+
+      <p>A ModbusPal project may require very specific bindings in order
+      to mimic a real-world device. The approach of ModbusPal is to let the
+      user create its own bindings thanks to scripts.</p>
+
+      <h2>Important notice</h2>
+
+      <div class="important">
+      <ul>
+          <li>When a script defines a new binding class, it should be
+          executed before the automations and MODBUS slaves are loaded from the project
+          file. The script should be added with the <q>Before init</q> parameter.
+          <li>It is highly recommanded to implement the <q>getClassName()</q> function.
+      </ul>
+      </div>
+
+    <h2>Basic binding</h2>
+
+    <ol>
+        <li>Import the class <q>PythonBinding</q> from the <q>modbuspal.script</q> package.
+        <li>Create a Python class that inherits <q>PythonBinding</q>.
+        <li>Override the <q>getSize()</q> and <q>getRegister()</q> functions (the
+            default implementations only return zeroes).
+    </ol>
+
+    <div class="notes">
+        <h3>Notes</h3>
+        <ul>
+            <li>The <q>getSize()</q> method returns, in bits, the total length of the formatted data created by the binding. For example, the built-in <q>SINT32</q> binding returns 32.
+            <li>The <q>getRegister()</q> method returns a 16-bit unsigned integer value which depends on the data format of the binding and the specified order.
+        </ul>
+    </div>
+
+      <p>Then the new binding should be registered into the project, so that
+          it can be used from the MODBUS Slave Editor of any slave in the
+          current project:</p>
+
+      <ol>
+          <li>Create an instance of the binding.
+          <li>Register this instance by calling the <q>ModbusPal.addBindingInstantiator()</q> function.
+      </ol>
+
+      <div class="code-sample">
+          <a href="py/BasicBinding.py">BasicBinding.py</a>
+      <pre>
+from modbuspal.script import PythonBinding
+
+class BasicBinding(PythonBinding):
+
+  # This binding uses a 32-bit signed integer formatting,
+  # then the size is 32 bits.
+  def getSize(self):
+    return 32;
+
+  # Override the getRegister() method so that it returns either
+  # the least or the most significant 16-bit word of the
+  # 32-bit integer.
+  def getRegister(self,rank,value):
+
+    # Cast value as an int
+    value_as_a_32bit_int = int(value);
+
+    # If rank is 0, extract the least significant 16-bit word
+    if rank==0:
+      value = value_as_a_32bit_int & 0xFFFF;
+      return value;
+
+    # If rank is 1, extract the most significant 16-bit word.
+    elif rank==1:
+      value = (value_as_a_32bit_int>>16) & 0xFFFF;
+      return value;
+
+    # It should never happen but, just in case,
+    # treat the higher ranks.
+    else:
+
+      # If the 32-bit value is positive, then higher 16-bit words are 0x0000
+      if value_as_a_32bit_int >= 0:
+        return 0x0000;
+
+      # If the 32-bit value is negative, then higher 16-bit words are 0xFFFF
+      else:
+        return 0xFFFF;
+
+bb = BasicBinding();
+ModbusPal.addBindingInstantiator(bb);
+      </pre>
+      </div>
+
+      <h2>Why does the binding have a strange name?</h2>
+
+      <p>The above example will create a new binding with a rather strange name:
+      <img src="img/view_of_python_binding_strange_name.jpg" class="img-stand-alone" alt="View of a binding with a strange name"/>
+      </p>
+
+      <p>This is because, by default, the binding is named after the Java classname.
+          But in the case of a class created by a Python script, the resulting classname
+          is cryptic.</p>
+
+      <p>To solve this problem, the binding must implement the <q>getClassName()</q>
+      function in order to return a better name.</p>
+
+      <p><strong>It is highly recommanded to implement the <q>getClassName()</q> function.</strong></p>
+
+      <div class="code-sample">
+      <pre>
+from modbuspal.script import PythonBinding
+
+class DummyBinding(PythonBinding):
+
+  def getClassName(self):
+    return "DummyBinding";
+
+db = DummyBinding();
+ModbusPal.addBindingInstantiator(bd);
+      </pre>
+      </div>
+
+      <h2>How to initialize the binding?</h2>
+
+      <p>Some bindings will require to initialize variables when they
+          are instanciated. Normally, this would be done in the constructor
+          of the Python class, the <q>__init__()</q> function.</p>
+
+      <p>But, due to the way ModbusPal operates, the constructor is not always
+      called. So, in order to initialize the internal variables of the binding,
+      the user should implement the <q>init()</q> function instead.</p>
+
+      <p>All initializations that are required by the binding should be made
+          into the <q>init()</q> function. The following sample of code illustrates
+      how:</p>
+
+      <div class="code-sample">
+          <pre>
+class DummyBinding(PythonBinding):
+  def init(self):
+    self.myVar = 5;
+          </pre>
+      </div>
+
+      <h2>Registers are OK, but what about coils?</h2>
+
+      <p>A binding can be used to associate an automation to coils. In that
+      case, ModbusPal will call the <q>getCoil()</q> function of the binding
+      instead of calling <q>getRegister()</q>.</p>
+
+      <p>The <q>getCoil()</q> function can be overridden, but in most cases
+      its default implementation should suffice.</p>
+      
+      <p>The default implementation of <q>getCoil()</q> is as follow:
+      <ol>
+          <li>Retrieve the 16-bit register in which the desired coil is located. This is done by dividing the provided rank by 16. For example, the coil of rank 25 will be located in register of rank 25/16=1 (Euclidian division). The <q>getRegister()</q> method is used to retrieve it.
+          <li>Extract the correct bit in that register. The rank of the coil within the register is obtained by the remainder of the above division. For example, the coil of rank 25 will be located in the bit number 25%16=9 of the register of rank 1.
+      </ol>
+
+      <h2>API</h2>
+
+      <p>Please consult the Javadoc of ModbusPal in order to get more
+      information on all the classes introduced in this page.</p>
+
+      <h2>Real-case example</h2>
+
+      <p>The following example is real-case binding script. The manufacturer of
+          some MODBUS device provides the following description of
+          the “date/time” registers:</p>
+
+      <table>
+          <tr><th>Register</th><th>High byte</th><th>Low byte</th></tr>
+          <tr><td>24</td><td>Minute</td><td>Second</td></tr>
+          <tr><td>25</td><td>Day</td><td>Hour</td></tr>
+          <tr><td>26</td><td>Year</td><td>Month</td></tr>
+      </table>
+
+      <p>One of the possible strategies to simulate this behavior is:</p>
+
+      <ul>
+          <li>To define an automation that will generate a date/time value
+              in the POSIX time format (The POSIX time is a 32-bit integer
+              which counts the number of seconds elapsed since 1st January 1970).
+          <li>Bind registers 24 to 26 to the above automation using a
+              Python binding.
+      </ul>
+
+      <p>The binding will have a size of 3*16 = 48 bits, and the <q>getRegister()</q>
+      method will behave as follow</p>
+
+      <ul>
+          <li>For rank==0, return reg = minute x 256 + second
+          <li>For rank==1, return reg = day x 256 + hour
+          <li>For rank==2, return reg = year x 256 + month
+      </ul>
+
+      <div class="code-sample">
+          <a href="py/AdvancedBinding.py">AdvancedBinding.py</a>
+      <pre>
+from modbuspal.script import PythonBinding
+from java.util import Calendar
+
+class AdvancedBinding(PythonBinding):
+
+  def getClassName(self):
+    return "AdvancedBinding";
+
+  def getSize(self):
+    return 3*16;
+
+  # Assuming that the provided "value" is a Unix timestamp (32-bit integer
+  # value representing the number of seconds since 1st January 1970),
+  # this binding will transfom that timestamp to the following formatting:
+  # - register #0 will contain minutes in the high byte, and seconds in the low byte
+  # - register #1 will contain days in the high byte, and hours in the low byte
+  # - register #2 will contain years in the high byte, and months in the low byte
+  def getRegister(self,rank,value):
+
+    unix_timestamp = long(value);
+    cal = Calendar.getInstance();
+    cal.setTimeInMillis(  unix_timestamp * 1000 );
+
+    if rank==0 :
+      second = cal.get( Calendar.SECOND );
+      minute = cal.get( Calendar.MINUTE );
+      return minute * 256 + second;
+
+    elif rank==1 :
+      hour = cal.get( Calendar.HOUR_OF_DAY );
+      day = cal.get( Calendar.DAY_OF_MONTH ) ;
+      return day * 256 + hour;
+
+    elif rank==2 :
+      month = cal.get( Calendar.MONTH ) ;
+      year = cal.get( Calendar.YEAR) % 100;
+      return year * 256 + month;
+
+    else:
+      return 0;
+
+ab = AdvancedBinding();
+ModbusPal.addBindingInstantiator(ab);
+      </pre>
+      </div>
+
+
+
+  </body>
+</html>

@@ -175,44 +175,44 @@ implements ModbusConst, ModbusSlaveListener
         java.awt.GridBagConstraints gridBagConstraints;
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        holdingRegistersPanel = new javax.swing.JPanel();
-        coilsPanel = new javax.swing.JPanel();
-        functionsPanel = new javax.swing.JPanel();
-        tuningPanel = new javax.swing.JPanel();
+        holdingRegistersPanel = new JPanel();
+        coilsPanel = new JPanel();
+        functionsPanel = new JPanel();
+        tuningPanel = new JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
+        jPanel2 = new JPanel();
+        jPanel4 = new JPanel();
         jLabel1 = new javax.swing.JLabel();
         minReplyDelayTextField = new NumericTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         maxReplyDelayTextField = new NumericTextField();
         jLabel4 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        jPanel5 = new JPanel();
         jLabel5 = new javax.swing.JLabel();
         noReplyRateSlider = new javax.swing.JSlider();
-        jPanel1 = new javax.swing.JPanel();
+        jPanel1 = new JPanel();
         importButton = new javax.swing.JButton();
         exportButton = new javax.swing.JButton();
         implementationComboBox = new javax.swing.JComboBox();
         stayOnTopCheckBox = new javax.swing.JCheckBox();
-        jPanel3 = new javax.swing.JPanel();
+        jPanel3 = new JPanel();
         statusLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         holdingRegistersPanel.setPreferredSize(new java.awt.Dimension(400, 300));
-        holdingRegistersPanel.setLayout(new java.awt.BorderLayout());
+        holdingRegistersPanel.setLayout(new BorderLayout());
         jTabbedPane1.addTab("Holding registers", holdingRegistersPanel);
 
-        coilsPanel.setLayout(new java.awt.BorderLayout());
+        coilsPanel.setLayout(new BorderLayout());
         jTabbedPane1.addTab("Coils", coilsPanel);
 
         functionsPanel.setPreferredSize(new java.awt.Dimension(400, 300));
-        functionsPanel.setLayout(new java.awt.BorderLayout());
+        functionsPanel.setLayout(new BorderLayout());
         jTabbedPane1.addTab("Functions", functionsPanel);
 
-        tuningPanel.setLayout(new java.awt.BorderLayout());
+        tuningPanel.setLayout(new BorderLayout());
 
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
@@ -288,11 +288,11 @@ implements ModbusConst, ModbusSlaveListener
 
         jScrollPane1.setViewportView(jPanel2);
 
-        tuningPanel.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        tuningPanel.add(jScrollPane1, BorderLayout.CENTER);
 
         jTabbedPane1.addTab("Tuning", tuningPanel);
 
-        getContentPane().add(jTabbedPane1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jTabbedPane1, BorderLayout.CENTER);
 
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
@@ -329,14 +329,14 @@ implements ModbusConst, ModbusSlaveListener
         });
         jPanel1.add(stayOnTopCheckBox);
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(jPanel1, BorderLayout.PAGE_START);
 
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
         statusLabel.setText("-");
         jPanel3.add(statusLabel);
 
-        getContentPane().add(jPanel3, java.awt.BorderLayout.SOUTH);
+        getContentPane().add(jPanel3, BorderLayout.SOUTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -453,10 +453,10 @@ implements ModbusConst, ModbusSlaveListener
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel coilsPanel;
+    private JPanel coilsPanel;
     private javax.swing.JButton exportButton;
-    private javax.swing.JPanel functionsPanel;
-    private javax.swing.JPanel holdingRegistersPanel;
+    private JPanel functionsPanel;
+    private JPanel holdingRegistersPanel;
     private javax.swing.JComboBox implementationComboBox;
     private javax.swing.JButton importButton;
     private javax.swing.JLabel jLabel1;
@@ -464,11 +464,11 @@ implements ModbusConst, ModbusSlaveListener
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
+    private JPanel jPanel1;
+    private JPanel jPanel2;
+    private JPanel jPanel3;
+    private JPanel jPanel4;
+    private JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField maxReplyDelayTextField;
@@ -476,7 +476,7 @@ implements ModbusConst, ModbusSlaveListener
     private javax.swing.JSlider noReplyRateSlider;
     private javax.swing.JLabel statusLabel;
     private javax.swing.JCheckBox stayOnTopCheckBox;
-    private javax.swing.JPanel tuningPanel;
+    private JPanel tuningPanel;
     // End of variables declaration//GEN-END:variables
 
     void setStatus(String text)

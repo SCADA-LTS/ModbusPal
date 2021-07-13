@@ -1,0 +1,100 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>ModbusPal</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+      
+      <h1>Automations in ModbusPal</h1>
+
+      <p>The registers and coils defined in the slaves of the project will become
+      dynamic by binding them to value generators, called <q>automations</q>.
+      Using automations will turn simple projects into realistic simulations.</p>
+      
+      <h2>Overview</h2>
+      
+      <p>An <q>automation</q> is made of a succession of <q>generators</q>.
+      Each generator is a formula that produces a dynamic value.
+      A generator is executed for a limited duration, and then the next
+      generator is used to continue producing the dynamic value.</p>
+
+      <p>For example, consider the following requirements:
+      <img src="img/a_spec_for_automation.jpg" class="img-stand-alone" title="Spec" alt="A specification for an automation" />
+      The above graph is made of 3 segments. It can be simulated by using
+      3 linear generators:
+      <img src="img/a_spec_for_automation_2.jpg" class="img-stand-alone" title="Spec" alt="Implementation graph" />
+      Additionally, the <q>Loop</q> option can be enabled so that the automation
+      restarts from the beginning when its end is reached. Otherwise, it would stop.</p>
+
+    <h2>Creating an automation</h2>
+    
+    <p>Clicking on the <q>Add</q> button in the <q>Automation</q> panel creates
+    a new automation in the current project. The new automation is instantly
+    added into the list. It contains no generator, and thus cannot generate
+    a dynamic value, yet.
+    <img src="img/view_of_automation_panel.jpg" class="img-stand-alone" title="Automation panel" alt="View of an automation panel"/>
+    </p>
+    
+    <h2>Automation’s name</h2>
+
+    <p>It is very important that each automation in the project has a unique
+    name. The name of the automation is what ModbusPal uses to create the
+    association with the registers/coils of the MODBUS slaves.</p>
+
+    <p>The name of the automation can be changed, but if the new name is
+    identical to the name of another existing automation, an error message
+    will appear.</p>
+
+    
+    <h2>Editing an automation</h2>
+
+    <p>Click on the
+    <q><img src="../automation/img/show.png" class="img-inline" alt="Show" title="Show"/></q>
+    button to open the automation editor. Information about how to edit an
+    automation can be found in
+    <a href="edit-automation.html">this page</a>.</p>
+
+    <h2>Delete automation</h2>
+
+    <p>Clicking on the 
+    <q><img src="../automation/img/delete.png" class="img-inline" alt="Delete" title="Delete"/></q>
+    button will remove an automation from the current project.</p>
+
+    <div class="notes">
+        <h3>Note</h3>
+        <p>Any association between the removed automation and the MODBUS
+        slaves will also be deleted.</p>
+    </div>
+
+    <h2>Binding automation</h2>
+    
+    <p>Bindings are required to associate automations and MODBUS slaves. Refer
+    to the information on
+    <a href="bindings-overview.html">this page</a>
+    to learn about bindings and how to create them.</p>
+
+    <h2>Executing automations</h2>
+    
+    <p>When a project file is loaded, or when new automations are created,
+    automations are stopped and do not generate dynamic values. They have to
+    be started.</p>
+
+    <p>An automation is started by clicking on its
+    <q><img src="../automation/img/play.png" class="img-inline" title="Start" alt="Start"/></q>
+    button. It will stop automatically when its finished generating values,
+    except if the <q>Loop</q> option has been activated in the editor. An
+    automation can be stopped at any time by clicking on the
+    <q><img src="../automation/img/stop.png" class="img-inline" title="Stop" alt="Stop"/></q>
+    button.</p>
+
+    <p>All automations can be started and stopped at once by clicking on the
+    <q>Start all</q> or the <q>Stop all</q> buttons.</p>
+
+  </body>
+</html>
