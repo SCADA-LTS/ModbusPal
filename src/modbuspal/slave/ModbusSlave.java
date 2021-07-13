@@ -170,6 +170,7 @@ implements ModbusPalXML, ModbusConst
         pduProcessors[FC_WRITE_MULTIPLE_COILS] = coils;
         pduProcessors[FC_WRITE_MULTIPLE_REGISTERS] = holdingRegisters;
         pduProcessors[FC_READ_WRITE_MULTIPLE_REGISTERS] = holdingRegisters;
+        pduProcessors[FC_READ_INPUT_REGISTERS] = holdingRegisters;
     }
 
 

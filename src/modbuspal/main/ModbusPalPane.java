@@ -56,6 +56,8 @@ implements ModbusPalXML, WindowListener, ModbusPalListener, ModbusLinkListener
     
     /** Default TCP/IP port in a string to be loaded into the GUI. */
     public static final String DEFAULT_PORT_TEXT = "502";
+    
+    public static final String XMPP_EXT = ".xmpp";
 
     private ArrayList<ModbusPalProjectListener> listeners = new ArrayList<ModbusPalProjectListener>();
         
@@ -286,12 +288,14 @@ implements ModbusPalXML, WindowListener, ModbusPalListener, ModbusLinkListener
 
         installRecorder();
         installCommPorts();
-        //installScriptEngine();
+        installScriptEngine();
         
         String initialLoadProjectFilePath = ModbusPalGui.getInitialLoadFilePath();
         ModbusPalProject project = null;
         File fileCheck = new File( initialLoadProjectFilePath );
-        if( initialLoadProjectFilePath != "" && fileCheck.isFile() )
+        if(!initialLoadProjectFilePath.isEmpty()
+                && fileCheck.exists()
+                && fileCheck.getName().endsWith(XMPP_EXT))
         {
             try
             {

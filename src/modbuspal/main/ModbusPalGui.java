@@ -113,6 +113,7 @@ public class ModbusPalGui
         String installArgFlag = "-install";
         String loadFileArgFlag = "-loadFile=";
         String portNumberArgFlag = "-portNumber=";
+        String noGuiFlag = "-noGui";
         
         if( args.length >= 1 )
         {
@@ -125,12 +126,16 @@ public class ModbusPalGui
                 }
                 else if( arg.startsWith( loadFileArgFlag ) )
                 {
-                	initialLoadFilePath = arg.substring( arg.lastIndexOf( loadFileArgFlag ) + loadFileArgFlag.length() );
+                    initialLoadFilePath = arg.substring( arg.lastIndexOf( loadFileArgFlag ) + loadFileArgFlag.length() );
                 }
                 else if( arg.startsWith( portNumberArgFlag ) )
                 {
                 	String portNumberString = arg.substring( arg.lastIndexOf( portNumberArgFlag ) + portNumberArgFlag.length() );
                 	initialPortNumber = Integer.valueOf( portNumberString ).intValue();
+                }
+                else if(arg.startsWith(noGuiFlag)) 
+                {
+                    runGui = false;
                 }
                 else
                 {
@@ -153,6 +158,8 @@ public class ModbusPalGui
                     newFrame().setVisible(true);
                 }
             });
+        } else {
+            ModbusPalPane modbusPalPane = new ModbusPalPane();
         }
     }
 
