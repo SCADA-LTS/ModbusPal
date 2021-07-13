@@ -16,6 +16,7 @@ public interface ModbusConst
     public static final byte FC_READ_COILS = (byte)0x01;
     public static final byte FC_READ_DISCRETE_INPUTS = (byte)0x02;
     public static final byte FC_READ_HOLDING_REGISTERS = (byte)0x03;
+    public static final byte FC_READ_INPUT_REGISTERS = (byte)0x04;
     public static final byte FC_WRITE_SINGLE_COIL = (byte)0x05;
     public static final byte FC_WRITE_SINGLE_REGISTER = (byte)0x06;
     public static final byte FC_WRITE_MULTIPLE_COILS = (byte)0x0F;

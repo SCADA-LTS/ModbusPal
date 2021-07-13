@@ -106,7 +106,7 @@ implements Runnable
     @Override
     public void run()
     {
-        System.out.println("Start ModubsTcpIpSlaveDispatcher");
+        //System.out.println("Start ModubsTcpIpSlaveDispatcher");
         register(this);
         
         int recv = 0;
@@ -184,7 +184,7 @@ implements Runnable
             Logger.getLogger(ModbusTcpIpSlaveDispatcher.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        System.out.println("Stop ModubsTcpIpSlaveDispatcher");
+        //System.out.println("Stop ModubsTcpIpSlaveDispatcher");
         unregister(this);
     }
 

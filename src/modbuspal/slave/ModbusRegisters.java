@@ -95,6 +95,7 @@ implements ModbusPduProcessor, TableModel, ModbusPalXML, ModbusConst
         switch( functionCode )
         {
             case FC_READ_HOLDING_REGISTERS: return processReadMultipleRegistersRequest(functionCode, buffer, offset, createIfNotExist);
+            case FC_READ_INPUT_REGISTERS: return processReadMultipleRegistersRequest(functionCode, buffer, offset, createIfNotExist);
             case FC_WRITE_SINGLE_REGISTER: return processWriteSingleRegisterRequest(functionCode, buffer, offset, createIfNotExist);
             case FC_WRITE_MULTIPLE_REGISTERS: return processWriteMultipleRegistersRequest(functionCode, buffer, offset, createIfNotExist);
             case FC_READ_WRITE_MULTIPLE_REGISTERS: return processReadWriteMultipleRegistersRequest(functionCode, buffer, offset, createIfNotExist);
@@ -108,6 +109,7 @@ implements ModbusPduProcessor, TableModel, ModbusPalXML, ModbusConst
         switch( req.getFunctionCode() )
         {
             case FC_READ_HOLDING_REGISTERS: return buildReadMultipleRegistersRequest(req, buffer, offset, createIfNotExist);
+            case FC_READ_INPUT_REGISTERS: return buildReadMultipleRegistersRequest(req, buffer, offset, createIfNotExist);
             case FC_WRITE_SINGLE_REGISTER: return buildWriteSingleRegisterRequest(req, buffer, offset, createIfNotExist);
             case FC_WRITE_MULTIPLE_REGISTERS: return buildWriteMultipleRegistersRequest(req, buffer, offset, createIfNotExist);
             case FC_READ_WRITE_MULTIPLE_REGISTERS: return buildReadWriteMultipleRegistersRequest(req, buffer, offset, createIfNotExist);
@@ -121,6 +123,7 @@ implements ModbusPduProcessor, TableModel, ModbusPalXML, ModbusConst
         switch(req.getFunctionCode() )
         {
             case FC_READ_HOLDING_REGISTERS: return readMultipleRegistersReply(req, buffer, offset, createIfNotExist);
+            case FC_READ_INPUT_REGISTERS: return readMultipleRegistersReply(req, buffer, offset, createIfNotExist);
             case FC_WRITE_SINGLE_REGISTER: return writeSingleRegisterReply(req, buffer, offset, createIfNotExist);
             case FC_WRITE_MULTIPLE_REGISTERS: return writeMultipleRegistersReply(req, buffer, offset, createIfNotExist);
             case FC_READ_WRITE_MULTIPLE_REGISTERS: return readWriteMultipleRegistersReply(req, buffer, offset, createIfNotExist);
