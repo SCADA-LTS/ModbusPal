@@ -74,7 +74,7 @@ implements AutomationExecutionListener
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setLayout(new java.awt.BorderLayout());
+        setLayout(new BorderLayout());
     }// </editor-fold>//GEN-END:initComponents
 
 

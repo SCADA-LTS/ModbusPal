@@ -77,12 +77,12 @@ implements ScriptListener, FileTransferHandler.FileTransferTarget
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        scriptsTab = new javax.swing.JPanel();
+        scriptsTab = new JPanel();
         scriptsScrollPane = new javax.swing.JScrollPane();
-        scriptsList = new javax.swing.JPanel();
-        scriptsButtons = new javax.swing.JPanel();
+        scriptsList = new JPanel();
+        scriptsButtons = new JPanel();
         addScriptButton = new javax.swing.JButton();
-        statusPanel = new javax.swing.JPanel();
+        statusPanel = new JPanel();
         statusLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -193,12 +193,12 @@ implements ScriptListener, FileTransferHandler.FileTransferTarget
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addScriptButton;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JPanel scriptsButtons;
-    private javax.swing.JPanel scriptsList;
+    private JPanel scriptsButtons;
+    private JPanel scriptsList;
     private javax.swing.JScrollPane scriptsScrollPane;
-    private javax.swing.JPanel scriptsTab;
+    private JPanel scriptsTab;
     private javax.swing.JLabel statusLabel;
-    private javax.swing.JPanel statusPanel;
+    private JPanel statusPanel;
     // End of variables declaration//GEN-END:variables
 
 
