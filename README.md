@@ -11,9 +11,13 @@ Add -noGui option in command and allow to run the tool in "headless" mode withou
 -loadFile="/relative/path/to/file/config_xmpp"
 Corrected relative paths for -loadFile option, for file config, with *.xmpp.
 
+example for no gui:
+
+java -jar ModbusPal.jar -loadFile="modbuspal_config.xmpp" -noGui
+
 example:
 
-java -jar ModbusPal.jar -loadFile="config.xmpp" -noGui
+java -jar ModbusPal.jar -loadFile="modbuspal_config.xmpp"
 
 This will run the application in no gui mode, with the configuration loaded from a file;
 
