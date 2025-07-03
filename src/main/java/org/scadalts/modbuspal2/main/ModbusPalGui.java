@@ -11,11 +11,13 @@
 
 package org.scadalts.modbuspal2.main;
 
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.scadalts.modbuspal2.cli.ModbusPal2Options;
 import org.scadalts.modbuspal2.cli.ModeType;
 import org.scadalts.modbuspal2.link.ModbusLink;
+import org.scadalts.modbuspal2.utils.FileUtils;
 import org.scadalts.modbuspal2.utils.ResourceUtils;
 
 import javax.swing.*;
@@ -25,6 +27,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.HashMap;
 
 /**
@@ -32,13 +35,13 @@ import java.util.HashMap;
  *
  * @author nnovic
  */
+@Log4j2
 public class ModbusPalGui extends ModbusPal2Options implements Runnable {
     public static final int MAX_PORT_NUMBER = 65536;
     private static final Logger LOG = LogManager.getLogger(ModbusPalGui.class);
     private static final HashMap<Object, ModbusPalPane> instances = new HashMap<Object, ModbusPalPane>();
+    private static final int initialPortNumber = -1;
     private static String initialLoadFilePath = "";
-    private static int initialPortNumber = -1;
-
 
     /**
      * This method gets the initial load file path to load specified by the user in the command line arguments.
@@ -135,22 +138,18 @@ public class ModbusPalGui extends ModbusPal2Options implements Runnable {
         boolean masterMode = isMasterMode();
         System.setProperty("java.awt.headless", String.valueOf(noGui));
 
-        if (projectFile != null) {
-            initialLoadFilePath = projectFile.getAbsolutePath();
+        if (Files.exists(projectFile.toPath()) == Files.notExists(projectFile.toPath())) {
+            throw new IllegalStateException("Permission denied: " + projectFile.getAbsolutePath());
         }
 
-        if (!noGui) {
-            java.awt.EventQueue.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    setNativeLookAndFeel();
-                    JFrame frame = newFrame();
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    frame.pack();
-                    frame.setVisible(true);
-                }
-            });
-        } else {
+        if (Files.notExists(projectFile.toPath())) {
+            File finalProjectFile = projectFile;
+            projectFile = FileUtils.getFileFromJar(projectFile.getName()).orElseThrow(() -> new IllegalStateException("File not exist: " + finalProjectFile.getAbsolutePath()));
+        }
+
+        initialLoadFilePath = projectFile.getAbsolutePath();
+
+        if (noGui) {
             try {
 
                 ModbusPalProject modbusPalProject;
@@ -181,8 +180,17 @@ public class ModbusPalGui extends ModbusPal2Options implements Runnable {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-
+        } else {
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    setNativeLookAndFeel();
+                    JFrame frame = newFrame();
+                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    frame.pack();
+                    frame.setVisible(true);
+                }
+            });
         }
     }
 

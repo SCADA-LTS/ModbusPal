@@ -613,7 +613,7 @@ public final class ModbusPalProject
         }
     }
 
-    public void save(File file) throws FileNotFoundException, IOException {
+    public void save(File file) throws IOException {
         projectFile = file;
         save();
     }
@@ -736,8 +736,8 @@ public final class ModbusPalProject
 
 
         StringBuilder flowControl = new StringBuilder("<flowcontrol ");
-        flowControl.append("xonxoff=\"").append(String.valueOf(linkSerialXonXoff)).append("\" ");
-        flowControl.append("rtscts=\"").append(String.valueOf(linkSerialRtsCts)).append("\" ");
+        flowControl.append("xonxoff=\"").append(linkSerialXonXoff).append("\" ");
+        flowControl.append("rtscts=\"").append(linkSerialRtsCts).append("\" ");
         flowControl.append("/>\r\n");
 
         out.write(flowControl.toString().getBytes());
@@ -840,7 +840,7 @@ public final class ModbusPalProject
      * @return true if the automation is added successfully, false otherwise.
      */
     public boolean addAutomation(Automation automation) {
-        LOG.info("Automations loading... {}", automation.getName());
+        LOG.debug("Automations loading... {}", automation.getName());
         // check if an automation already exists with the same name
         String name = automation.getName();
         if (getAutomation(name) != null) {
@@ -850,7 +850,7 @@ public final class ModbusPalProject
         automations.add(automation);
         int index = automations.indexOf(automation);
         notifyAutomationAdded(automation, index);
-        LOG.info("Automations loaded... {}", automation.getName());
+        LOG.debug("Automations loaded... {}", automation.getName());
         return true;
     }
 
@@ -907,7 +907,7 @@ public final class ModbusPalProject
     }
 
     void removeAllAutomations() {
-        Automation list[] = new Automation[0];
+        Automation[] list = new Automation[0];
         list = automations.toArray(list);
         for (int i = 0; i < list.length; i++) {
             removeAutomation(list[i]);
@@ -961,7 +961,7 @@ public final class ModbusPalProject
                 } else {
                     name = name.trim() + " ";
                 }
-                name = name + "#" + String.valueOf(idGenerator.createID());
+                name = name + "#" + idGenerator.createID();
             }
             auto.setName(name);
         }
@@ -1260,7 +1260,7 @@ public final class ModbusPalProject
         if (found.isEmpty()) {
             return null;
         } else {
-            ModbusSlave retval[] = new ModbusSlave[0];
+            ModbusSlave[] retval = new ModbusSlave[0];
             retval = found.toArray(retval);
             return retval;
         }
@@ -1437,7 +1437,7 @@ public final class ModbusPalProject
 
         // if needed, first exportSlave automations (they need to be imported first!)
         if (withAutomations == true) {
-            String names[] = exportedSlave.getRequiredAutomations();
+            String[] names = exportedSlave.getRequiredAutomations();
             for (int i = 0; i < names.length; i++) {
                 Automation automation = getAutomation(names[i]);
                 automation.save(out);
@@ -1702,9 +1702,7 @@ public final class ModbusPalProject
      */
     public void removeModbusPalListener(ModbusPalListener l) {
         synchronized (listeners) {
-            if (listeners.contains(l)) {
-                listeners.remove(l);
-            }
+            listeners.remove(l);
         }
     }
 
