@@ -1,0 +1,164 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <title>ModbusPal</title>
+    <link href="styles.css" rel="stylesheet" type="text/css"/>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+</head>
+<body>
+
+<h1>Configuring MODBUS slaves</h1>
+
+<p><img alt="View of the empty MODBUS Slave editor." class="img-stand-alone" src="img/view_of_modbus_slave_dialog.jpg"/>
+</p>
+
+<h2>Choosing the implementation</h2>
+
+<p>Each slave in the project can have a different MODBUS implementation.
+    Currently supported implementations are <q>MODBUS</q> and <q>J-Bus</q>.</p>
+
+<p>To change the implementation, click on the
+    <q><img alt="View of the MODBUS slave implementation chooser" class="img-inline" src="img/modbus_slave_implementation_chooser.jpg"
+            title="Implementation drop-down list"/></q>
+    drop-down list, and select the appropriate one.</p>
+
+<h2>Adding registers/coils</h2>
+
+<p>Select the appropriate tab (<q>Holding registers</q> or <q>Coils</q>)
+    and click on the <q>Add</q> button in order to define values for the
+    MODBUS slave.</p>
+
+<p>A new dialog will appear, asking for the first and the last address
+    of the range of values to add into the slave.
+    <img alt="View of the AddRegistersDialog" class="img-stand-alone" src="img/view_of_the_add_registers_dialog.jpg"
+         title="AddRegistersDialog"/>
+    The values are created
+    with '0' by default.</p>
+
+<h2>Editing registers/coils</h2>
+
+<h3>Changing the value</h3>
+
+<p>The default value of a holding register or a coil is '0'. It can be
+    modified by double-clicking on the cell of the value.
+    <img alt="Double-click on the cell to edit the value" class="img-stand-alone"
+         src="img/where_to_edit_register_value.jpg" title="Double-click on the cell to edit the value"/>
+    A holding register's value is comprised between 0 and 65535. A coil’s
+    value is either 0 or 1.</p>
+
+<h3>Editing the name</h3>
+
+<p>Each register/coil can have a name, so that its role is clarified for
+    the user. To edit the name, double-click on the corresponding <q>Name</q>
+    cell.
+    <img alt="Doucle-click on the name to change it" class="img-stand-alone" src="img/where_to_edit_register_name.jpg"
+         title="Doucle-click on the name to change it"/>
+</p>
+
+<h3>Copy/Paste</h3>
+
+<p>To save time, existing registers/coils can be copied from one address
+    to another. Select the rows to copy and press <abbr>CTRL+C</abbr>.
+    Then, select the rows to overwrite and press <abbr>CTRL+V</abbr>. Values,
+    names and bindings are duplicated.</p>
+
+<h3>Sorting registers/coils</h3>
+
+<p>The rows can be sorted by address, value or name. Just click on the
+    corresponding table header.
+    <img alt="Sorting registers columns" class="img-stand-alone" src="img/how_to_sort_registers_and_coils.jpg"
+         title="Sorting registers columns"/>
+</p>
+
+<h3>Removing registers/coils</h3>
+
+<p>To remove registers or coils, select the corresponding rows and then
+    click on the <q>Remove</q> button.</p>
+
+<h2>Exporting slave configuration</h2>
+
+<p>Once a MODBUS slave is fully configured, it can be exported as a
+    template for creating more slaves with the same configuration. To export
+    a slave, click on the <q>Export</q> button and choose an export file.</p>
+
+<p>If the slave contains bindings, an additional dialog will appear to
+    let the user choose if the bindings must be exported as well. In that
+    case, the option to export the related automation(s) is enabled.
+    <img alt="View of the export slave options" class="img-stand-alone" src="img/view_of_export_slave_options.jpg"
+         title="Export options"/>
+</p>
+
+<h2>Importing slave configuration</h2>
+
+<p>Exported slave configurations can be imported as templates for new
+    MODBUS slaves. Once a MODBUS slave has been created, click on the
+    <q>Import</q> button.</p>
+
+<p>If the imported configuration contains bindings and automations, then
+    an additional dialog will appear to let the user select if they should
+    be imported as well.
+    <img alt="Import options" class="img-stand-alone" src="img/view_of_import_slave_options.jpg"
+         title="Import options"/>
+</p>
+
+<p>The imported data will be merged with the existing. In case of
+    conflicts, a dialog will appear with proposals to keep the existing
+    data or replace it with the new.</p>
+
+<h2>Adding new functions</h2>
+
+<p>The MODBUS specification defines a range of function codes that is
+    free for manufacturer specific implementations. In ModbusPal, function
+    codes from 65 to 75, and 100 to 110 can be associated with user-defined
+    <q>PDU processors</q>.
+    <img alt="View of the functions list" class="img-stand-alone" src="img/view_of_set_function_panel.jpg"
+         title="The functions list"/>
+</p>
+
+<p>A <q>PDU processor</q> is an object, defined by a script, that will reply as
+    needed to those unspecified MODBUS requests. Information on how to write
+    a PDU processor in Python is available in <a href="python-function.html">this page</a>.</p>
+
+<h3>Associating a PDU processor to a function code</h3>
+
+<p>To associate a function code to a PDU processor, select one or several
+    rows (using the <abbr>SHIFT</abbr> and/or the <abbr>CTRL</abbr> keys) and
+    click on the <q>Set</q> button.</p>
+
+<p>A new dialog appears. The user is invited to a select a PDU processor
+    from two different lists:
+    <img alt="View of the AddFunctionDialog" class="img-stand-alone" src="img/view_of_addfunctiondialog.jpg"
+         title="The AddFunctionDialog"/>
+</p>
+
+<dl>
+    <dt>Existing instance</dt>
+    <dd>Associates an already existing instance of a PDU processor to the
+        selected function code(s). It implies that the same PDU processor will
+        receive MODBUS requests with various function codes: the data held
+        by the PDU processor is shared for all these function codes.
+    </dd>
+    <dt>New instance</dt>
+    <dd>Creates a new instance of the selected PDU processor class and
+        associates it with the selected function code(s). All the selected
+        function code(s) will share the same new instance, though.
+    </dd>
+</dl>
+
+<p>If the PDU processor defines a graphical interface (control panel),
+    then this panel is added to the configuration dialog.
+    <img alt="View of the dialog with a custom PDU processor" class="img-stand-alone"
+         src="img/view_of_modbus_slave_dialog_with_custom_pdu_processor.jpg" title="Dialog with a custom PDU processor"/>
+</p>
+
+<h3>Unlink a PDU processor and a function code</h3>
+
+<p>To remove the association between a function code and a PDU processor,
+    select it and click on the <q>Reset</q> button.</p>
+
+</body>
+</html>
