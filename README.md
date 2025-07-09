@@ -1,3 +1,42 @@
+# ModbusPal2
+ModbusPal - a Java MODBUS simulator
+
+fork: https://sourceforge.net/projects/modbuspal/
+
+## Help:
+```
+Usage: <main class> [-hv] [-mm] [-ng] [-sc] [-sx] [-f=<projectFile>]
+                    [-rf=<recordFile>] [-sb=<serialStopBits>]       
+                    [-si=<serialPortId>] [-sp=<serialParity>]       
+                    [-sr=<serialBaudRate>] [-t=<transportType>]     
+                    [-tp=<tcpPortNumber>]                           
+  -f, -loadFile, --project-file=<projectFile>
+
+  -h, --help
+  -mm, --master-mode
+  -ng, -noGui, --no-gui
+
+  -rf, --record-file=<recordFile>
+
+  -sb, --serial-stop-bits=<serialStopBits>
+
+  -sc, --serial-rts-cts
+
+  -si, --serial-port-id=<serialPortId>
+
+  -sp, --serial-parity=<serialParity>
+
+  -sr, --serial-baud-rate=<serialBaudRate>
+
+  -sx, --serial-xon-xoff
+
+  -t, --transport-type=<transportType>
+
+  -tp, --tcp-port-number=<tcpPortNumber>
+
+  -v, --version
+```
+
 # ModbusPal +1.6c
 
 ModbusPal - a Java MODBUS simulator
