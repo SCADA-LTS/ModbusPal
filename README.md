@@ -23,7 +23,9 @@ Usage: <main class> [-hv] [-mm] [-ng] [-sc] [-sx] [-f=<projectFile>]
   -f, -loadFile, --project-file=<projectFile>
 
   -h, --help
+
   -mm, --master-mode
+
   -ng, -noGui, --no-gui
 
   -rf, --record-file=<recordFile>
