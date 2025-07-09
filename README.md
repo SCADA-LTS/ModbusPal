@@ -3,7 +3,17 @@ ModbusPal - a Java MODBUS simulator
 
 fork: https://sourceforge.net/projects/modbuspal/
 
-## Help:
+### Run with GUI:
+```
+java -jar ModbusPal2.jar
+```
+
+### Run without GUI (headless mode) with port 503:
+```
+java -jar ModbusPal2-2.0.0.jar -ng -tp 503
+```
+
+### Help:
 ```
 Usage: <main class> [-hv] [-mm] [-ng] [-sc] [-sx] [-f=<projectFile>]
                     [-rf=<recordFile>] [-sb=<serialStopBits>]       
